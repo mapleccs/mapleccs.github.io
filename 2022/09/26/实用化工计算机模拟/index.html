@@ -1,0 +1,509 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>实用化工计算机模拟 | 若羌博客</title><meta name="keywords" content="学术, 若羌"><meta name="author" content="Mapleccs"><meta name="copyright" content="Mapleccs"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="例1 青霉素数据插值拟合 题目如下： 青霉素发酵的实验数据如下表所示，请用插值的方法估算t&#x3D;10,30,50,70,90,110,130,150,170,190 h时的青霉素浓度。    t&#x2F;h 青霉素浓度（单位：&#x2F;ml） t&#x2F;h 青霉素浓度（单位：&#x2F;ml）     0 0 120 9430   20 106 140 10950   40 16">
+<meta property="og:type" content="article">
+<meta property="og:title" content="实用化工计算机模拟">
+<meta property="og:url" content="https://mapleccs.github.io/2022/09/26/%E5%AE%9E%E7%94%A8%E5%8C%96%E5%B7%A5%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A8%A1%E6%8B%9F/index.html">
+<meta property="og:site_name" content="若羌博客">
+<meta property="og:description" content="例1 青霉素数据插值拟合 题目如下： 青霉素发酵的实验数据如下表所示，请用插值的方法估算t&#x3D;10,30,50,70,90,110,130,150,170,190 h时的青霉素浓度。    t&#x2F;h 青霉素浓度（单位：&#x2F;ml） t&#x2F;h 青霉素浓度（单位：&#x2F;ml）     0 0 120 9430   20 106 140 10950   40 16">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mapleccs.github.io/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A8%A1%E6%8B%9F.jpg">
+<meta property="article:published_time" content="2022-09-26T00:00:00.000Z">
+<meta property="article:modified_time" content="2022-10-11T03:03:06.271Z">
+<meta property="article:author" content="Mapleccs">
+<meta property="article:tag" content="学术, 若羌">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mapleccs.github.io/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A8%A1%E6%8B%9F.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://mapleccs.github.io/2022/09/26/%E5%AE%9E%E7%94%A8%E5%8C%96%E5%B7%A5%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A8%A1%E6%8B%9F/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '实用化工计算机模拟',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-10-11 11:03:06'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/./img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A8%A1%E6%8B%9F.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">若羌博客</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">实用化工计算机模拟</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-09-26T00:00:00.000Z" title="发表于 2022-09-26 08:00:00">2022-09-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-10-11T03:03:06.271Z" title="更新于 2022-10-11 11:03:06">2022-10-11</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="实用化工计算机模拟"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="例1-青霉素数据插值拟合">例1 青霉素数据插值拟合</h3>
+<p><strong>题目如下：</strong></p>
+<p>青霉素发酵的实验数据如下表所示，请用插值的方法估算t=10,30,50,70,90,110,130,150,170,190 h时的青霉素浓度。</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">t/h</th>
+<th style="text-align: center;">青霉素浓度（单位：/ml）</th>
+<th style="text-align: center;">t/h</th>
+<th style="text-align: center;">青霉素浓度（单位：/ml）</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">120</td>
+<td style="text-align: center;">9430</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">106</td>
+<td style="text-align: center;">140</td>
+<td style="text-align: center;">10950</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">1600</td>
+<td style="text-align: center;">160</td>
+<td style="text-align: center;">10280</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">3000</td>
+<td style="text-align: center;">180</td>
+<td style="text-align: center;">9620</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">80</td>
+<td style="text-align: center;">5810</td>
+<td style="text-align: center;">200</td>
+<td style="text-align: center;">9400</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">8600</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>代码说明：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> interpolate</span><br><span class="line"><span class="keyword">import</span> pylab <span class="keyword">as</span> pl</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">pl.rcParams[<span class="string">&#x27;font.sans-serif&#x27;</span>] = [<span class="string">&#x27;SimHei&#x27;</span>]     <span class="comment"># 用来画图显示中文字体</span></span><br><span class="line"></span><br><span class="line">t = np.linspace(<span class="number">0</span>, <span class="number">200</span>, <span class="number">11</span>)</span><br><span class="line"><span class="comment"># t = [  0.  20.  40.  60.  80. 100. 120. 140. 160. 180. 200.]</span></span><br><span class="line"></span><br><span class="line">c = [<span class="number">0</span>, <span class="number">106</span>, <span class="number">1600</span>, <span class="number">3000</span>, <span class="number">5810</span>, <span class="number">8600</span>, <span class="number">9430</span>, <span class="number">10950</span>, <span class="number">10280</span>, <span class="number">9620</span>, <span class="number">9400</span>]</span><br><span class="line"></span><br><span class="line">pl.plot(t, c, <span class="string">&#x27;ro&#x27;</span>, label=<span class="string">&#x27;origin&#x27;</span>)</span><br><span class="line"></span><br><span class="line">t_new = np.linspace(<span class="number">10</span>, <span class="number">190</span>, <span class="number">10</span>)</span><br><span class="line"><span class="comment"># t_new = [ 10.  30.  50.  70.  90. 110. 130. 150. 170. 190.]</span></span><br><span class="line"></span><br><span class="line">fit_ways = [<span class="string">&#x27;linear&#x27;</span>, <span class="string">&#x27;nearest&#x27;</span>, <span class="string">&#x27;nearest-up&#x27;</span>, <span class="string">&#x27;zero&#x27;</span>, <span class="string">&#x27;slinear&#x27;</span>, <span class="string">&#x27;quadratic&#x27;</span>, <span class="string">&#x27;cubic&#x27;</span>, <span class="string">&#x27;previous&#x27;</span>, <span class="string">&#x27;next&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> fit_way <span class="keyword">in</span> fit_ways:</span><br><span class="line">    f = interpolate.interp1d(t, c, kind=fit_way)</span><br><span class="line">    c_new = f(t_new)</span><br><span class="line">    pl.plot(t_new, c_new, label=<span class="built_in">str</span>(fit_way))</span><br><span class="line"></span><br><span class="line">pl.ylabel(<span class="string">&#x27;青霉素浓度(单位：/ml)&#x27;</span>)</span><br><span class="line">pl.xlabel(<span class="string">&#x27;时间(单位：h)&#x27;</span>)</span><br><span class="line">pl.title(<span class="string">&#x27;青霉素拟合效果图&#x27;</span>)</span><br><span class="line">pl.legend()</span><br><span class="line"></span><br><span class="line">pl.savefig(<span class="string">&#x27;./青霉素插值拟合效果图.png&#x27;</span>, dpi=<span class="number">900</span>)</span><br><span class="line">pl.show()</span><br></pre></td></tr></table></figure>
+<p><strong>结果说明：</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/mapleccs/picture/img/Penicillin%20interpolation%20fit%20effect.png" /></p>
+<hr />
+<h3 id="例2-计算双组分简单精馏塔的理论板数">例2 计算双组分简单精馏塔的理论板数</h3>
+<p>氯仿-苯双组分精馏系统的气液平衡数据如下表所示。对氯仿而言，规定<span class="math inline">\(x_f = 0.4\)</span>，<span class="math inline">\(x_d = 0.9\)</span>，<span class="math inline">\(x_w=0.15\)</span>，精馏段和提馏段的回流比分别为<span class="math inline">\(R=5\)</span>，<span class="math inline">\(R^{&#39;}=4\)</span>，试计算所需的理论板数。</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">x</th>
+<th style="text-align: center;">0.178</th>
+<th style="text-align: center;">0.275</th>
+<th style="text-align: center;">0.372</th>
+<th style="text-align: center;">0.456</th>
+<th style="text-align: center;">0.650</th>
+<th style="text-align: center;">0.844</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">y</td>
+<td style="text-align: center;">0.243</td>
+<td style="text-align: center;">0.382</td>
+<td style="text-align: center;">0.518</td>
+<td style="text-align: center;">0.616</td>
+<td style="text-align: center;">0.795</td>
+<td style="text-align: center;">0.931</td>
+</tr>
+</tbody>
+</table>
+<p><strong>模型说明：</strong></p>
+<p>​ 精馏段理论板数：<span class="math display">\[N = \int^{x_d}_{x_f}\frac{dx}{y-x-(x_d-y)/R}\]</span></p>
+<p>​ 提馏段理论板数：<span class="math display">\[N = \int^{x_f}_{x_w}\frac{dx}{y-x-(y-x_w)/R^{&#39;}}\]</span></p>
+<p><strong>代码说明：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pylab <span class="keyword">as</span> pl</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> sympy <span class="keyword">as</span> sy</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line">pl.rcParams[<span class="string">&#x27;font.sans-serif&#x27;</span>] = [<span class="string">&#x27;SimHei&#x27;</span>]     <span class="comment"># 用来画图显示中文字体</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 导入初始数据</span></span><br><span class="line">xi = np.array([<span class="number">0.178</span>, <span class="number">0.275</span>, <span class="number">0.372</span>, <span class="number">0.456</span>, <span class="number">0.650</span>, <span class="number">0.844</span>])</span><br><span class="line">yi = np.array([<span class="number">0.243</span>, <span class="number">0.382</span>, <span class="number">0.518</span>, <span class="number">0.616</span>, <span class="number">0.795</span>, <span class="number">0.931</span>])</span><br><span class="line">x_d = <span class="number">0.9</span></span><br><span class="line">x_f = <span class="number">0.4</span></span><br><span class="line">x_w = <span class="number">0.15</span></span><br><span class="line">R = <span class="number">5</span></span><br><span class="line">R1 = <span class="number">4</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 进行拟合绘图，得到相应方程式</span></span><br><span class="line">pl.plot(xi, yi, <span class="string">&#x27;ro&#x27;</span>, label=<span class="string">&#x27;原始数据&#x27;</span>)</span><br><span class="line">coff = np.polyfit(xi, yi, <span class="number">2</span>)	<span class="comment"># &#x27;2&#x27;表示采用二次项进行拟合</span></span><br><span class="line">y_fit = np.poly1d(coff)     <span class="comment"># 拟合函数表达式</span></span><br><span class="line">y_new = y_fit(xi)    <span class="comment"># 通过函数表达式进行计算</span></span><br><span class="line">pl.plot(xi, y_new, <span class="string">&#x27;b-&#x27;</span>, label=<span class="string">&#x27;拟合线&#x27;</span>)</span><br><span class="line">pl.legend()</span><br><span class="line">pl.savefig(<span class="string">&#x27;./figures/气液平衡数据拟合效果图.png&#x27;</span>, dpi=<span class="number">900</span>)</span><br><span class="line">pl.show()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进行符号计算</span></span><br><span class="line">x = sy.Symbol(<span class="string">&#x27;x&#x27;</span>)</span><br><span class="line">y = coff[<span class="number">0</span>]*x**<span class="number">2</span>+coff[<span class="number">1</span>]*x+coff[<span class="number">2</span>]</span><br><span class="line">func1 = <span class="number">1</span>/(y-x-(x_d-y)/R)</span><br><span class="line">func2 = <span class="number">1</span>/(y-x-(y-x_w)/R1)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进行积分计算，并且向上圆整</span></span><br><span class="line">N_D = math.ceil(sy.integrate(func1, (x, x_f, x_d)))</span><br><span class="line">N_W = math.ceil(sy.integrate(func2, (x, x_w, x_f)))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;精馏段的理论板数为：&#123;0&#125;&#x27;</span>.<span class="built_in">format</span>(N_D))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;提馏段的理论板数为：&#123;0&#125;&#x27;</span>.<span class="built_in">format</span>(N_W))</span><br></pre></td></tr></table></figure>
+<p><strong>结果说明：</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/mapleccs/picture/img/The%20effect%20of%20fitting%20gas-liquid%20equilibrium%20data.png" /></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">精馏段的理论板数为：<span class="number">5</span></span><br><span class="line">提馏段的理论板数为：<span class="number">6</span></span><br></pre></td></tr></table></figure>
+<hr />
+<h3 id="例3-等温管式反应器的管长计算">例3 等温管式反应器的管长计算</h3>
+<p>某气相二聚反应<span class="math inline">\(2A\rightarrow S\)</span>在等温管式反应器内进行，反应条件为<span class="math inline">\(T=638{}^{\circ}C\)</span>，<span class="math inline">\(P = 1 atm(101.3kPa)\)</span>，反应器内径<span class="math inline">\(d = 10cm\)</span>。已知反应速率为<span class="math inline">\((-r_A) = 116(P_A^2-\frac{1}{1.27}P_S)\)</span>，为了控制反应，向反应物A中加入一定惰性气体<span class="math inline">\(I\)</span>，两者的摩尔比为<span class="math inline">\(A:I=1:0.5\)</span>。进气速率<span class="math inline">\(F_0=10kmol/h\)</span>。</p>
+<ol type="1">
+<li>试计算转化率为0.1，0.2，0.3，0.4，0.5时所需要的反应器管长，并计算平衡转化率<span class="math inline">\(x_{Ae}\)</span>。</li>
+<li>假设现有一长度为<span class="math inline">\(5m\)</span>的管式反应器，试计算相同条件下该反应器的出口转化率。</li>
+</ol>
+<p><strong>模型说明：</strong></p>
+<p>等温管式反应器模型为： <span class="math display">\[
+V_R = F_{\mathrm{A0}}\int_{0}^{x_\mathrm{A}}\frac{1}{-r_\mathrm{A}}\mathrm{d}x=y_{\mathrm{A0}}F_0\int_{0}^ {x_\mathrm{A}}\frac{1}{-r_\mathrm{A}}\mathrm{d}x
+\]</span> 其中<span class="math inline">\(F_{A0}\)</span>是<span class="math inline">\(A\)</span>的进气速率，<span class="math inline">\(y_{A0}\)</span>是<span class="math inline">\(A\)</span>进气速率占总的进气速率<span class="math inline">\(F_0\)</span>的比值。</p>
+<p>因此反应器管长即为： <span class="math display">\[
+L=\frac{V_{\mathrm{R}}}{\left(\pi d^{2} / 4\right)}=\frac{4}{\pi d^{2}} y_{\mathrm{A} 0} F_{0} \int_{0}^{x_{\mathrm{A}}} \frac{1}{\left(-r_{\mathrm{A}}\right)} \mathrm{d} x
+\]</span> 下面推导压力<span class="math inline">\(P_A\)</span>和<span class="math inline">\(P_S\)</span>与转化率<span class="math inline">\(x_A\)</span>的关系。</p>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 17%" />
+<col style="width: 21%" />
+<col style="width: 4%" />
+<col style="width: 48%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">转化率</th>
+<th style="text-align: center;">2A</th>
+<th style="text-align: center;">S</th>
+<th style="text-align: center;">I</th>
+<th style="text-align: center;">总的进气</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(x_t=0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(F_{A0}\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span class="math inline">\(F_I\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(F = F_{A0}+0+F_I\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(x_t=x_t\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(F_{A0} \cdot (1-x_t)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{F_{A0}\cdot x_t}{2}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(F_I\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(F = F_{A0} \cdot (1-x_t) + \frac{F_{A0}\cdot x_t}{2} + F_I\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>因此可以得到： <span class="math display">\[
+C_A = \frac{F_{A0} \cdot (1-x_t)}{v}\\
+C_S = \frac{(F_{A0} \cdot x_t)/2}{v}
+\]</span> 其中体积流量<span class="math inline">\(v\)</span>为： <span class="math display">\[
+v=v_0(1+\varepsilon x_A)\frac{P}{P_0}\frac{T}{T_0}
+\]</span> 对于恒温恒压下，有 <span class="math display">\[
+v=v_0(1+\varepsilon x_A)
+\]</span> 式中膨胀因子<span class="math inline">\(\varepsilon\)</span>计算如下： <span class="math display">\[
+\delta = \frac{1-2}{2} = -\frac{1}{2}
+\\
+\varepsilon = y_{A0}\cdot \delta
+\]</span></p>
+<p>此时，有： <span class="math display">\[
+C_A = \frac{F_{A0}(1-x_A)}{v_0(1+\varepsilon x_A)}=C_{A0}(\frac{1-x_A}{1+\varepsilon x_A)})
+\\
+C_S = \frac{F_{A0}x_A/2}{v_0(1+\varepsilon x_A)} = \frac{1}{2}C_{A0}(\frac{x_A}{1+\varepsilon x_A)})
+\]</span> 有理想气体状态方程可知： <span class="math display">\[
+P_A=C_ART=C_{A0}RT(\frac{1-x_A}{1+\varepsilon x_A)})=P_{A0}(\frac{1-x_A}{1+\varepsilon x_A)})
+\\
+P_S = C_SRT0=\frac{1}{2}C_{A0}RT(\frac{x_A}{1+\varepsilon x_A)})=\frac{1}{2}P_{A0}(\frac{x_A}{1+\varepsilon x_A)})
+\]</span> <strong>代码说明：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pylab <span class="keyword">as</span> pl</span><br><span class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> integrate</span><br><span class="line"><span class="keyword">from</span> scipy.optimize <span class="keyword">import</span> fsolve</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">pl.rcParams[<span class="string">&#x27;font.sans-serif&#x27;</span>] = [<span class="string">&#x27;SimHei&#x27;</span>]     <span class="comment"># 用来画图显示中文字体</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始数据</span></span><br><span class="line">d = <span class="number">0.1</span>     <span class="comment"># 反应器内径d=0.1 m</span></span><br><span class="line">F_0 = <span class="number">10</span>    <span class="comment"># 进气速率F_0=10 kmol/h</span></span><br><span class="line">P = <span class="number">1</span>       <span class="comment"># 反应压力P=1 atm</span></span><br><span class="line">y_A0 = <span class="number">2</span>/<span class="number">3</span>  <span class="comment"># A的初始摩尔分数</span></span><br><span class="line">P_A0 = y_A0*P   <span class="comment"># A的初始分压</span></span><br><span class="line">delta = -<span class="number">1</span>/<span class="number">2</span></span><br><span class="line">eps = y_A0*delta    <span class="comment"># eps: 膨胀因子</span></span><br><span class="line">x_A = np.linspace(<span class="number">0.1</span>, <span class="number">0.5</span>, <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">func1</span>(<span class="params">x, P_A0, eps</span>):</span><br><span class="line">    PA = P_A0 * (<span class="number">1</span> - x) / (<span class="number">1</span> + eps * x)</span><br><span class="line">    PS = P_A0 / <span class="number">2</span> * x / (<span class="number">1</span> + eps * x)</span><br><span class="line">    r = <span class="number">116</span> * (PA * PA - PS / <span class="number">1.27</span>)</span><br><span class="line">    <span class="keyword">return</span> r</span><br><span class="line"></span><br><span class="line"><span class="comment"># 积分式</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">func2</span>(<span class="params">x, P_A0, eps</span>):</span><br><span class="line">    PA = P_A0 * (<span class="number">1</span> - x) / (<span class="number">1</span> + eps * x)</span><br><span class="line">    PS = P_A0 / <span class="number">2</span> * x / (<span class="number">1</span> + eps * x)</span><br><span class="line">    r = <span class="number">116</span> * (PA * PA - PS / <span class="number">1.27</span>)</span><br><span class="line">    f = <span class="number">1</span> / r</span><br><span class="line">    <span class="keyword">return</span> f</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 结果计算</span></span><br><span class="line">L_list = []</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> x_A:</span><br><span class="line">    f_int = integrate.quad(func2, <span class="number">0</span>, x, args=(P_A0, eps))[<span class="number">0</span>]</span><br><span class="line">    L = <span class="number">4.0</span>/(np.pi*d*d)*y_A0*F_0*f_int</span><br><span class="line">    L_list.append(L)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 结果输出</span></span><br><span class="line">key_text = [<span class="string">&#x27;反应物A的转化率为&#123;0&#125;时&#x27;</span>.<span class="built_in">format</span>(i) <span class="keyword">for</span> i <span class="keyword">in</span> x_A]</span><br><span class="line">value_text = [<span class="string">&#x27;管长为&#123;0&#125;m&#x27;</span>.<span class="built_in">format</span>(i) <span class="keyword">for</span> i <span class="keyword">in</span> L_list]</span><br><span class="line">dict_text = <span class="built_in">dict</span>(<span class="built_in">zip</span>(key_text, value_text))</span><br><span class="line"><span class="keyword">for</span> key, value <span class="keyword">in</span> dict_text.items():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;&#123;0&#125;,&#123;1&#125;&#x27;</span>.<span class="built_in">format</span>(key, value))</span><br><span class="line"></span><br><span class="line">x_Ae = fsolve(func1, <span class="number">0.5</span>, args=(P_A0, eps))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;平衡转化率为：&#123;0&#125;&#x27;</span>.<span class="built_in">format</span>(x_Ae[<span class="number">0</span>]))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制图形</span></span><br><span class="line">pl.plot(x_A, L_list, <span class="string">&#x27;r-&#x27;</span>)</span><br><span class="line">pl.xlabel(<span class="string">&#x27;反应物A的转化率&#x27;</span>)</span><br><span class="line">pl.ylabel(<span class="string">&#x27;管长&#x27;</span>)</span><br><span class="line">pl.title(<span class="string">&#x27;反应物转化率与管长关系&#x27;</span>)</span><br><span class="line">pl.savefig(<span class="string">&#x27;./figures/反应物转化率与管长关系.png&#x27;</span>, dpi=<span class="number">900</span>)</span><br><span class="line">pl.show()</span><br></pre></td></tr></table></figure>
+<p><strong>结果说明：</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/mapleccs/picture/img/Reactant%20conversion%20versus%20tube%20length.png" /></p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">反应物A的转化率为0.1时,管长为1.8300236803057697m</span><br><span class="line">反应物A的转化率为0.2时,管长为4.173500548541931m</span><br><span class="line">反应物A的转化率为0.3时,管长为7.455560795076742m</span><br><span class="line">反应物A的转化率为0.4时,管长为13.015403488473822m</span><br><span class="line">反应物A的转化率为0.5时,管长为42.51957343112952m</span><br><span class="line">平衡转化率为：0.5028317449405086</span><br></pre></td></tr></table></figure>
+<hr />
+<h3 id="例4-等温管式反应器的空时计算">例4 等温管式反应器的空时计算</h3>
+<p>某气相反应<span class="math inline">\(A \rightarrow 3R\)</span>在等温管式反应器内反应，反应条件为<span class="math inline">\(T = 215\mathrm{ {}^{\circ}C}\)</span>，<span class="math inline">\(P=502.625\mathrm{kPa}(5 \mathrm{atm})\)</span>，系统保持恒压。已知反应速率为<span class="math inline">\((-r)=kC_A^{1/2}\)</span>，式中<span class="math inline">\(k=0.01\)</span>。为控制反应，向反应物A中加入一定惰性气体<span class="math inline">\(I\)</span>，两者的摩尔比为<span class="math inline">\(A:I=1:1\)</span>。已知出口转化率为0.8，试计算<span class="math inline">\(PFR\)</span>反应器的空时。</p>
+<p><strong>模型说明：</strong></p>
+<p>等温管式反应器的模型为 <span class="math display">\[
+\tau = C_{\mathrm{A0}}\int^{x_f}_0{\frac{1}{(-r_\mathrm{A})}dx}
+\]</span></p>
+<p>反应过程中有体积变化，设膨胀因子为<span class="math inline">\(\varepsilon_\mathrm{A}\)</span>，则对于线性膨胀 <span class="math display">\[
+V = V_0（1+\varepsilon_\mathrm{A}x_\mathrm{A}）
+\\
+C_A = \frac{n_\mathrm{A}}{V} = \frac{n_\mathrm{A0}(1-x_\mathrm{A})}{V_0(1+\varepsilon_\mathrm{A}x_\mathrm{A})} = \frac{C_{\mathrm{A0}}(1-x_\mathrm{A})}{(1+\varepsilon_\mathrm{A}x_\mathrm{A})}
+\]</span> 下面计算膨胀因子<span class="math inline">\(\varepsilon_{\mathrm{A}}\)</span>：</p>
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 20%" />
+<col style="width: 18%" />
+<col style="width: 3%" />
+<col style="width: 39%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">\(A\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(3R\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(I\)</span></th>
+<th style="text-align: center;"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(x_\mathrm{A}=0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_\mathrm{A0}\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span class="math inline">\(n_I\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_{total}=n_\mathrm{A0}+n_I\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(x_\mathrm{A}=x_\mathrm{t}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_\mathrm{A0}(1-x_\mathrm{t})\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(3n_\mathrm{A0}x_\mathrm{t}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_I\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_{total}=n_\mathrm{A0}(1-x_\mathrm{t})+3n_\mathrm{A0}x_\mathrm{t}+n_I\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(x_\mathrm{A}=1\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span class="math inline">\(3n_\mathrm{A0}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_I\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_{total}=3n_\mathrm{A0}+n_I\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>由理想气体状态方程，得 <span class="math display">\[
+V_{x_\mathrm{A}=0}=\frac{(n_\mathrm{_\mathrm{A0}}+n_I)RT}{P}
+\\
+V_{x_\mathrm{A}=1}=\frac{(3n_\mathrm{_\mathrm{A0}}+n_I)RT}{P}
+\]</span></p>
+<p>故： <span class="math display">\[
+\varepsilon_\mathrm{A} = \frac{V_{x_\mathrm{A}=1}-V_{x_\mathrm{A}=0}}{V_{x_\mathrm{A}=0}}=\frac{2n_\mathrm{A0}}{n_\mathrm{A0}+n_I}
+\]</span> 又<span class="math inline">\(n_\mathrm{A0}:n_I=1:1\)</span></p>
+<p>所以 <span class="math display">\[
+\varepsilon_\mathrm{A}=1
+\]</span> <span class="math inline">\(C_\mathrm{A0}\)</span>也可由理想气体状态方程计算 <span class="math display">\[
+C_\mathrm{A0} = \frac{y_\mathrm{A0}P}{RT}
+\\
+其中，y_\mathrm{A0}=0.5(进料气中A的摩尔分数)
+\]</span> <strong>代码说明：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pylab <span class="keyword">as</span> pl</span><br><span class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> integrate</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">pl.rcParams[<span class="string">&#x27;font.sans-serif&#x27;</span>] = [<span class="string">&#x27;SimHei&#x27;</span>]     <span class="comment"># 用来画图显示中文字体</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始数据</span></span><br><span class="line">varepsilon = <span class="number">1</span></span><br><span class="line">T = <span class="number">215</span>+<span class="number">273.15</span></span><br><span class="line">R = <span class="number">0.082</span></span><br><span class="line">P = <span class="number">5</span></span><br><span class="line">k = <span class="number">0.01</span></span><br><span class="line">y_A0 = <span class="number">0.5</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 数值计算</span></span><br><span class="line">C_A0 = y_A0*P/(R*T)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">r_</span>(<span class="params">x_A</span>):</span><br><span class="line">    <span class="keyword">global</span> k, C_A0, varepsilon</span><br><span class="line">    C_A = C_A0 * (<span class="number">1</span> - x_A) / (<span class="number">1</span> + x_A * varepsilon)</span><br><span class="line">    r = k*np.sqrt(C_A)</span><br><span class="line">    f = <span class="number">1</span>/r</span><br><span class="line">    <span class="keyword">return</span> f</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">x_f = np.linspace(<span class="number">0</span>, <span class="number">0.8</span>, <span class="number">100</span>)</span><br><span class="line">tua_list = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> x_f:</span><br><span class="line">    f_int = integrate.quad(r_, <span class="number">0</span>, i)[<span class="number">0</span>]</span><br><span class="line">    tua = C_A0*f_int</span><br><span class="line">    tua_list.append(tua)</span><br><span class="line"></span><br><span class="line">f_int_xf = integrate.quad(r_, <span class="number">0</span>, <span class="number">0.8</span>)[<span class="number">0</span>]</span><br><span class="line">tua_xf = C_A0*f_int_xf</span><br><span class="line"></span><br><span class="line">pl.plot(x_f, tua_list, <span class="string">&#x27;r-&#x27;</span>)</span><br><span class="line">pl.xlabel(<span class="string">&#x27;转化率&#x27;</span>)</span><br><span class="line">pl.ylabel(<span class="string">&#x27;空时&#x27;</span>)</span><br><span class="line">pl.title(<span class="string">&#x27;转化率与空时的关系&#x27;</span>)</span><br><span class="line">pl.scatter(<span class="number">0.8</span>, tua_xf, color=<span class="string">&#x27;g&#x27;</span>, s=<span class="number">10</span>)</span><br><span class="line">pl.annotate(<span class="string">&quot;(0.8, &#123;:.2f&#125;)&quot;</span>.<span class="built_in">format</span>(tua_xf), (<span class="number">0.8</span>, tua_xf),</span><br><span class="line">            xycoords=<span class="string">&#x27;data&#x27;</span>, xytext=(<span class="number">0.5</span>, tua_xf),</span><br><span class="line">            arrowprops=<span class="built_in">dict</span>(arrowstyle=<span class="string">&#x27;-&gt;&#x27;</span>))</span><br><span class="line">pl.savefig(<span class="string">&#x27;./figures/转化率与空时的关系.png&#x27;</span>, dpi=<span class="number">900</span>)</span><br><span class="line">pl.show()</span><br></pre></td></tr></table></figure>
+<p><strong>结果说明：</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/mapleccs/picture/img/Conversion%20rate%20versus%20airtime.png" /></p>
+<hr />
+<h3 id="例5-用微分法进行动力学数据分析">例5 用微分法进行动力学数据分析</h3>
+<p>反应物A在一等温间歇反应器中发生的反应为：<span class="math inline">\(A \to 产物\)</span>，测量得到的反应器中不同时间下反应物A的浓度<span class="math inline">\(C_A\)</span>如下表所示。是根据表中数据确定其反应速率方程。</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">时间 t/s</th>
+<th style="text-align: center;">0</th>
+<th style="text-align: center;">20</th>
+<th style="text-align: center;">40</th>
+<th style="text-align: center;">60</th>
+<th style="text-align: center;">120</th>
+<th style="text-align: center;">180</th>
+<th style="text-align: center;">300</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(C_A/(mol/L)\)</span></td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>模型说明：</strong> <span class="math display">\[
+动力学模型：-r_A = kC_A^n             
+\]</span> <strong>代码说明：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pylab <span class="keyword">as</span> pl</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> scipy.optimize <span class="keyword">import</span> leastsq</span><br><span class="line"></span><br><span class="line">pl.rcParams[<span class="string">&#x27;font.sans-serif&#x27;</span>] = [<span class="string">&#x27;SimHei&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始数据</span></span><br><span class="line">t = np.array([<span class="number">0</span>, <span class="number">20</span>, <span class="number">40</span>, <span class="number">60</span>, <span class="number">120</span>, <span class="number">180</span>, <span class="number">300</span>])</span><br><span class="line">C_A = np.array([<span class="number">10</span>, <span class="number">8</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>])</span><br><span class="line">ln_CA = np.log(C_A)     <span class="comment"># 为了方便拟合转化成直线拟合</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 需要拟合的函数fit_func</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">fit_func</span>(<span class="params">p, x</span>):</span><br><span class="line">    k, b = p</span><br><span class="line">    <span class="keyword">return</span> k*x+b</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 偏差函数：x,y都是列表:这里的x,y与上面的t,ln_CA中是一一对应的</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">error</span>(<span class="params">p, x, y</span>):</span><br><span class="line">    <span class="keyword">return</span> fit_func(p, x)-y</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># k,b的初始值，可以任意设定</span></span><br><span class="line">p0 = [<span class="number">1</span>, <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把error函数中除了p0以外的参数打包到args中(使用要求)</span></span><br><span class="line">Para = leastsq(error, p0, args=(t, ln_CA))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取结果</span></span><br><span class="line">k, b = Para[<span class="number">0</span>]</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;k=&quot;</span>, k, <span class="string">&quot;b=&quot;</span>, b)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Cost=&quot;</span>+<span class="built_in">str</span>(Para[<span class="number">1</span>]))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;y=&quot;</span>+<span class="built_in">str</span>(<span class="built_in">round</span>(k, <span class="number">2</span>))+<span class="string">&quot;*x+&quot;</span>+<span class="built_in">str</span>(<span class="built_in">round</span>(b, <span class="number">2</span>)))</span><br><span class="line"></span><br><span class="line">t_x = np.linspace(t[<span class="number">0</span>], t[-<span class="number">1</span>], <span class="number">50</span>)</span><br><span class="line">y = k*t_x+b</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制原始数据点</span></span><br><span class="line">pl.plot(t, C_A, <span class="string">&#x27;ro&#x27;</span>)</span><br><span class="line">pl.title(<span class="string">&#x27;初始数据分布图&#x27;</span>)</span><br><span class="line">pl.xlabel(<span class="string">&#x27;时间t&#x27;</span>)</span><br><span class="line">pl.ylabel(<span class="string">&#x27;浓度C_A&#x27;</span>)</span><br><span class="line">pl.savefig(<span class="string">&#x27;./figures/初始数据分布图.png&#x27;</span>, dpi=<span class="number">900</span>)</span><br><span class="line">pl.show()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制对数关系图及其拟合曲线</span></span><br><span class="line">pl.plot(t, ln_CA, <span class="string">&#x27;ro&#x27;</span>, label=<span class="string">&#x27;ln(CA)&#x27;</span>)</span><br><span class="line">pl.plot(t_x, y, <span class="string">&#x27;g-&#x27;</span>, label=<span class="string">&quot;y=&quot;</span>+<span class="built_in">str</span>(<span class="built_in">round</span>(k, <span class="number">2</span>))+<span class="string">&quot;*x+&quot;</span>+<span class="built_in">str</span>(<span class="built_in">round</span>(b, <span class="number">2</span>)))</span><br><span class="line">pl.legend()</span><br><span class="line">pl.title(<span class="string">&#x27;最小二乘法拟合&#x27;</span>)</span><br><span class="line">pl.xlabel(<span class="string">&#x27;时间t&#x27;</span>)</span><br><span class="line">pl.ylabel(<span class="string">&#x27;ln(CA)&#x27;</span>)</span><br><span class="line">pl.savefig(<span class="string">&#x27;./figures/最小二乘法拟合效果图.png&#x27;</span>, dpi=<span class="number">900</span>)</span><br><span class="line">pl.show()</span><br></pre></td></tr></table></figure>
+<p><strong>结果说明：</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/mapleccs/picture/img/Initial%20data%20distribution%20chart.png" /></p>
+<p><img src="./figures/Least%20squares%20fitting%20effect.png" /></p>
+<p>即反应速率方程为： <span class="math display">\[
+-r_A = 8.58C_A^{-0.01}
+\]</span></p>
+<hr />
+<h3 id="例6-气体状态方程">例6 气体状态方程</h3>
+<p>在状态方程p-V-T​关系计算在945.36<span class="math inline">\(kPa\)</span>(9.33atm)、300.2K时，容器中充以2mol氮气，试求该容器的体积。已知氮气的范德华常数<span class="math inline">\(a=4.17 atm \cdot L^2/mol^2\)</span>， <span class="math inline">\(b = 0.0371L/mol\)</span>。</p>
+<p><strong>模型说明：</strong></p>
+<p>范德华方程为： <span class="math display">\[
+(p+\frac{an^2}{V^2})(V-nb)=nRT
+\]</span> <strong>代码说明：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scipy.optimize <span class="keyword">as</span> opt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始数据</span></span><br><span class="line">n = <span class="number">2</span>        <span class="comment"># 单位：mol</span></span><br><span class="line">p = <span class="number">9.33</span>     <span class="comment"># 单位：atm</span></span><br><span class="line">T = <span class="number">300.2</span>    <span class="comment"># 单位：K</span></span><br><span class="line">a = <span class="number">4.17</span>     <span class="comment"># 单位：atm*(L^2)/(mol^2)</span></span><br><span class="line">b = <span class="number">0.0371</span>   <span class="comment"># 单位：L/mol</span></span><br><span class="line">R = <span class="number">0.08206</span>  <span class="comment"># 单位：L*atm/(K*mol)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 范德华方程</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">func</span>(<span class="params">V</span>):</span><br><span class="line">    <span class="keyword">return</span> (p+((a*(n**<span class="number">2</span>))/(V**<span class="number">2</span>)))*(V-n*b)-n*R*T</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">V0 = n*R*T/p    <span class="comment"># 赋予初始值，有可搜寻的范围</span></span><br><span class="line"></span><br><span class="line">ans = opt.brentq(func, V0*(-<span class="number">10</span>), V0*<span class="number">10</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;该容器的体积为：&#123;:.2f&#125;L&#x27;</span>.<span class="built_in">format</span>(ans))     <span class="comment"># 保留两位小数</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>结果说明：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">该容器的体积为：<span class="number">5.00</span>L</span><br></pre></td></tr></table></figure>
+<hr />
+<h3 id="例7-计算混合液体的泡点及平衡蒸汽组成">例7 计算混合液体的泡点及平衡蒸汽组成</h3>
+<p>计算在<span class="math inline">\(101.325kPa\)</span>下<span class="math inline">\(0.5\)</span>(摩尔分数)苯、<span class="math inline">\(0.3\)</span>(摩尔分数)甲苯、<span class="math inline">\(0.2\)</span>(摩尔分数)乙苯混合物的泡点及平衡蒸汽组成。已知每一纯组分i的饱和蒸汽压<span class="math inline">\(p_i^0\)</span>与绝对温度<span class="math inline">\(T\)</span>有下列关系： <span class="math display">\[
+lg_{10}(p_i^0)=a_i-b_i/T
+\]</span> 式中，<span class="math inline">\(p_i^0\)</span>的单位是<span class="math inline">\(mmHg\)</span>；<span class="math inline">\(T\)</span>的单位为<span class="math inline">\(K\)</span>。系数<span class="math inline">\(a_i\)</span>和<span class="math inline">\(b_i\)</span>如下表。</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(i\)</span></th>
+<th style="text-align: center;">组分</th>
+<th style="text-align: center;"><span class="math inline">\(a_i\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(b_i\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">苯</td>
+<td style="text-align: center;">7.84135</td>
+<td style="text-align: center;">1750</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">甲苯</td>
+<td style="text-align: center;">8.08840</td>
+<td style="text-align: center;">1985</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">乙苯</td>
+<td style="text-align: center;">8.11404</td>
+<td style="text-align: center;">2129</td>
+</tr>
+</tbody>
+</table>
+<p><strong>模型说明</strong></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://mapleccs.github.io">Mapleccs</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://mapleccs.github.io/2022/09/26/%E5%AE%9E%E7%94%A8%E5%8C%96%E5%B7%A5%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A8%A1%E6%8B%9F/">https://mapleccs.github.io/2022/09/26/%E5%AE%9E%E7%94%A8%E5%8C%96%E5%B7%A5%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A8%A1%E6%8B%9F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://mapleccs.github.io" target="_blank">若羌博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/./img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A8%A1%E6%8B%9F.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wx_pay.png" target="_blank"><img class="post-qr-code-img" src="/img/wx_pay.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2022/10/09/%E7%88%AC%E8%99%AB%E6%95%99%E5%AD%A6/"><img class="prev-cover" src="/./img/scrapy.svg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">爬虫教学</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Mapleccs</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/mapleccs" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:mapleccs.outlook.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B1-%E9%9D%92%E9%9C%89%E7%B4%A0%E6%95%B0%E6%8D%AE%E6%8F%92%E5%80%BC%E6%8B%9F%E5%90%88"><span class="toc-number">1.</span> <span class="toc-text">例1 青霉素数据插值拟合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B2-%E8%AE%A1%E7%AE%97%E5%8F%8C%E7%BB%84%E5%88%86%E7%AE%80%E5%8D%95%E7%B2%BE%E9%A6%8F%E5%A1%94%E7%9A%84%E7%90%86%E8%AE%BA%E6%9D%BF%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">例2 计算双组分简单精馏塔的理论板数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B3-%E7%AD%89%E6%B8%A9%E7%AE%A1%E5%BC%8F%E5%8F%8D%E5%BA%94%E5%99%A8%E7%9A%84%E7%AE%A1%E9%95%BF%E8%AE%A1%E7%AE%97"><span class="toc-number">3.</span> <span class="toc-text">例3 等温管式反应器的管长计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B4-%E7%AD%89%E6%B8%A9%E7%AE%A1%E5%BC%8F%E5%8F%8D%E5%BA%94%E5%99%A8%E7%9A%84%E7%A9%BA%E6%97%B6%E8%AE%A1%E7%AE%97"><span class="toc-number">4.</span> <span class="toc-text">例4 等温管式反应器的空时计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B5-%E7%94%A8%E5%BE%AE%E5%88%86%E6%B3%95%E8%BF%9B%E8%A1%8C%E5%8A%A8%E5%8A%9B%E5%AD%A6%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90"><span class="toc-number">5.</span> <span class="toc-text">例5 用微分法进行动力学数据分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B6-%E6%B0%94%E4%BD%93%E7%8A%B6%E6%80%81%E6%96%B9%E7%A8%8B"><span class="toc-number">6.</span> <span class="toc-text">例6 气体状态方程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B7-%E8%AE%A1%E7%AE%97%E6%B7%B7%E5%90%88%E6%B6%B2%E4%BD%93%E7%9A%84%E6%B3%A1%E7%82%B9%E5%8F%8A%E5%B9%B3%E8%A1%A1%E8%92%B8%E6%B1%BD%E7%BB%84%E6%88%90"><span class="toc-number">7.</span> <span class="toc-text">例7 计算混合液体的泡点及平衡蒸汽组成</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/06/03/%E7%94%9F%E7%89%A9%E5%8F%8D%E5%BA%94%E5%99%A8%E7%9A%84%E6%95%B0%E5%AD%A6%E6%A8%A1%E5%9E%8B/" title="生物反应器的数学模型"><img src="/./img/scrapy.svg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="生物反应器的数学模型"/></a><div class="content"><a class="title" href="/2023/06/03/%E7%94%9F%E7%89%A9%E5%8F%8D%E5%BA%94%E5%99%A8%E7%9A%84%E6%95%B0%E5%AD%A6%E6%A8%A1%E5%9E%8B/" title="生物反应器的数学模型">生物反应器的数学模型</a><time datetime="2023-06-03T00:00:00.000Z" title="发表于 2023-06-03 08:00:00">2023-06-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/09/%E7%88%AC%E8%99%AB%E6%95%99%E5%AD%A6/" title="爬虫教学"><img src="/./img/scrapy.svg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="爬虫教学"/></a><div class="content"><a class="title" href="/2022/10/09/%E7%88%AC%E8%99%AB%E6%95%99%E5%AD%A6/" title="爬虫教学">爬虫教学</a><time datetime="2022-10-09T00:00:00.000Z" title="发表于 2022-10-09 08:00:00">2022-10-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/26/%E5%AE%9E%E7%94%A8%E5%8C%96%E5%B7%A5%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A8%A1%E6%8B%9F/" title="实用化工计算机模拟"><img src="/./img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A8%A1%E6%8B%9F.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="实用化工计算机模拟"/></a><div class="content"><a class="title" href="/2022/09/26/%E5%AE%9E%E7%94%A8%E5%8C%96%E5%B7%A5%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A8%A1%E6%8B%9F/" title="实用化工计算机模拟">实用化工计算机模拟</a><time datetime="2022-09-26T00:00:00.000Z" title="发表于 2022-09-26 08:00:00">2022-09-26</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Mapleccs</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
